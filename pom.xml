@@ -176,6 +176,7 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <mainClass>com.FahadMVC.pro</mainClass>
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>

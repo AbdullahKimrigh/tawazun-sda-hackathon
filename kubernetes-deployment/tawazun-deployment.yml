@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tawazun-app
-  labels:
-    app: tawazun
   namespace: tawazun
 spec:
   replicas: 1
@@ -18,8 +16,19 @@ spec:
       containers:
         - name: tawazun-app
           image: abdullahkimrigh/tawazun-sda-hackathon:0.1
+          env:
+            - name: DB_URL
+              value: mysql
+            - name: DB_PORT
+              value: '3306'  
+            - name: DB_NAME
+              value: tawazun  
+            - name: DB_USERNAME
+              value: root  
+            - name: DB_PASSWORD
+              value: root 
           ports:
-            - containerPort: 8080
+          - containerPort: 80
           livenessProbe:
             httpGet:
               path: /probes
@@ -38,10 +47,3 @@ spec:
               port: 80
             failureThreshold: 30
             periodSeconds: 10
-          volumeMounts:
-            - name: pv-ebs-db
-              mountPath: /var/lib/twazun-app
-      volumes:
-        - name: pv-ebs-db
-          persistentVolumeClaim:
-            claimName: pvc-ebs-db

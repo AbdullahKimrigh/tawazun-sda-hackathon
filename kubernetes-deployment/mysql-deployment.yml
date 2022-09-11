@@ -16,17 +16,13 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql
+        - image: mysql:latest
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: root
             - name: MYSQL_DATABASE
-              value: DB_tawazun
-            - name: MYSQL_USER
-              value: root
-            - name: MUSQL_PASSWORD
-              value: root
+              value: tawazun 
           ports:
             - containerPort: 3306
               name: mysql

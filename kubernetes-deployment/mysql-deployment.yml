@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  namespace: tawazun
+  labels:
+    app: mysql
+    name: mysql-db
 spec:
   replicas: 1
   selector:
@@ -15,13 +19,17 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql:latest
+        - image: mysql
           name: mysql
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: root
+            - name: MYSQL_USER
+              value: "mysql"
             - name: MYSQL_DATABASE
-              value: tawazun 
+              value: "mysql"
+            - name: MYSQL_PASSWORD
+              value: "mysql"
+            - name: MYSQL_ROOT_PASSWORD
+              value: "mysql"
           ports:
             - containerPort: 3306
               name: mysql
@@ -44,7 +52,7 @@ spec:
             failureThreshold: 30
             periodSeconds: 10
           volumeMounts:
-            - name: mysql-pv
+            - name: mysql-pv 
               mountPath: /var/lib/mysql
       volumes:
         - name: mysql-pv

@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: pvc-ebs-db
+  labels:
+    type: cloud
 spec:
-  storageClassName: manual
+  storageClassName: mysql-db-ebs
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
-      storage: 5Gi
+      storage: 2Gi
+  volumeName: pv-ebs-db

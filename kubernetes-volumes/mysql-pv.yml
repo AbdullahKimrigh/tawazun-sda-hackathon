@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv
+  name: pv-ebs-db
   labels:
-    type: local
+    type: cloud
 spec:
-  storageClassName: manual
+  storageClassName: mysql-db-ebs
   capacity:
-    storage: 5Gi
+    storage: 2Gi
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data" 
+    - ReadWriteMany
+  awsElasticBlockStore:
+    volumeID: vol-09ae750d97e198a16
+    fsType: ext4

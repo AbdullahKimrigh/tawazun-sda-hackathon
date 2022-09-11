@@ -2,15 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tawazun-app
+  namespace: tawazun
+  labels:
+    app: tawazun
+    service: tawazun-svc
+    name: tawazun-app
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: tawazun
+      service: tawazun-svc
   template:
     metadata:
       labels:
         app: tawazun
+        service: tawazun-svc
     spec:
       containers:
         - name: tawazun-app
@@ -21,13 +28,20 @@ spec:
             - name: DB_PORT
               value: '3306'  
             - name: DB_NAME
-              value: tawazun  
+              value: prodects  
             - name: DB_USERNAME
               value: root  
             - name: DB_PASSWORD
               value: root 
+          resources: 
+            requests: 
+              memory: 250Mi
+              cpu: "250m"
+            limits:
+              memory: 512Mi
+              cpu: "500m"
           ports:
-          - containerPort: 80
+          - containerPort: 8080
           livenessProbe:
             httpGet:
               path: /probes

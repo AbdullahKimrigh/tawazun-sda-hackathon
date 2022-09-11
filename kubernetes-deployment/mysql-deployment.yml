@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - image: mysql
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+            - name: MYSQL_DATABASE
+              value: DB_tawazun
+            - name: MYSQL_USER
+              value: admin
+            - name: MUSQL_PASSWORD
+              value: admin
+          ports:
+            - containerPort: 3306
+              name: mysql
+          livenessProbe:
+            httpGet:
+              path: /probes
+              port: 3306
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /probes
+              port: 3306
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /probes
+              port: 3306
+            failureThreshold: 30
+            periodSeconds: 10
+          volumeMounts:
+            - name: pv-ebs-db
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: pv-ebs-db
+          persistentVolumeClaim:
+            claimName: pvc-ebs-db

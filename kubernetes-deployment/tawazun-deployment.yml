@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tawazun-app
+  labels:
+    app: tawazun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tawazun
+  template:
+    metadata:
+      labels:
+        app: tawazun
+    spec:
+      containers:
+      - image: abdullahkimrigh/tawazun-sda-hackathon:0.1
+        name: tawazun-app
+        ports:
+        - containerPort: 8080
+          name: tawazun
+        livenessProbe:
+          httpGet:
+            path: /probes
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /probes
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        startupProbe:
+          httpGet:
+            path: /probes
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10

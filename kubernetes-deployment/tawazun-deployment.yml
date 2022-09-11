@@ -38,3 +38,10 @@ spec:
               port: 80
             failureThreshold: 30
             periodSeconds: 10
+          volumeMounts:
+            - name: pv-ebs-db
+              mountPath: /var/lib/twazun-app
+      volumes:
+        - name: pv-ebs-db
+          persistentVolumeClaim:
+            claimName: pvc-ebs-db

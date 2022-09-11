@@ -18,23 +18,23 @@ spec:
       - image: abdullahkimrigh/tawazun-sda-hackathon:0.1
         name: tawazun-app
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           name: tawazun
         livenessProbe:
           httpGet:
             path: /probes
-            port: 8080
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /probes
-            port: 8080
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 10
         startupProbe:
           httpGet:
             path: /probes
-            port: 8080
+            port: 80
           failureThreshold: 30
           periodSeconds: 10

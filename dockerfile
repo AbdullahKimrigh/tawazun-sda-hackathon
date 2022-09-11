@@ -1,4 +1,4 @@
-FROM maven:3.6.0-jdk-11-slim AS build
+FROM maven:3.6.3-openjdk-11 AS build
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN ["mvn", "clean"]
 COPY ["src/main", "/app/src/main"]
 RUN ["mvn", "package"]
 
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jre
 
 COPY --from=build /app/target/tawazun.war /
 

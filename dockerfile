@@ -1,4 +1,4 @@
-FROM maven:3.6.3-openjdk-11 AS build
+FROM maven:3.6-jdk-11-alpine AS build
 
 WORKDIR /app
 
@@ -10,9 +10,9 @@ RUN ["mvn", "clean"]
 COPY ["/src", "/app/src"]
 RUN ["mvn", "package"]
 
-FROM openjdk:11-jdk
+FROM openjdk:11-jre-alpine
 
-COPY --from=build /app/target/tawazun.war .
+COPY --from=build /app/target/tawazun.war /
 
 EXPOSE 8080
-CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/tawazun.war"]
+CMD ["java", "-jar", "/tawazun.war"]

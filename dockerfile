@@ -12,6 +12,7 @@ RUN ["mvn", "package"]
 
 FROM openjdk:11-jre-slim
 
-COPY --from=build /code/target/worker-jar-with-dependencies.jar /
+COPY --from=build /app/target/*.war /
 
+EXPOSE 8080
 CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/tawazun-sda-hackathon.war"]

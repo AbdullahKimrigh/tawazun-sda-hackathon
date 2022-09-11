@@ -11,7 +11,7 @@ spec:
   - name: tawazun-service
     port: 80
     targetPort: 80
-    nodePort: 30001
+    nodePort: 30859
     protocol: TCP
   selector:
     app: tawazun

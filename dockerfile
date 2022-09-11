@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY pom.xml /app/pom.xml
 RUN ["mvn", "dependency:resolve"]
-RUN ["mvn", "compile"]
+RUN ["mvn", "clean"]
 
 # Adding source, compile and package into a fat jar
 COPY ["src/main", "/app/src/main"]

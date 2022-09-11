@@ -3,6 +3,7 @@ FROM openjdk:11-jre
 
 COPY . .
 
+COPY pom.xml .
 RUN ["mvn", "dependency:resolve"]
 RUN ["mvn", "clean"]
 RUN ["mvn", "package"]

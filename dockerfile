@@ -12,7 +12,7 @@ RUN ["mvn", "package"]
 
 FROM openjdk:11-jre-slim
 
-COPY --from=build /app/target/*.war /
+COPY --from=build /app/target/tawazun.war /
 
 EXPOSE 8080
-CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/*.war"]
+CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/tawazun.war"]

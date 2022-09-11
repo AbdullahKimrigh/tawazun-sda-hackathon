@@ -4,6 +4,7 @@ metadata:
   name: pv-ebs-db
   labels:
     type: cloud
+  namespace: tawazun
 spec:
   storageClassName: mysql-db-ebs
   capacity:

@@ -4,6 +4,7 @@ metadata:
   name: tawazun-app
   labels:
     app: tawazun
+  namespace: tawazun
 spec:
   replicas: 1
   selector:

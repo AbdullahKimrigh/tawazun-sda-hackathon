@@ -4,12 +4,14 @@ metadata:
   name: tawazun
   labels:
     app: tawazun
+  namespace: tawazun
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - name: tawazun-service
     port: 80
     targetPort: 80
+    nodePort: 30001
     protocol: TCP
   selector:
     app: tawazun

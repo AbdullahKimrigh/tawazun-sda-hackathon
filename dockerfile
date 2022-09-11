@@ -10,4 +10,4 @@ RUN ["/usr/local/bin/mvn-entrypoint.sh","mvn","verify","clean","--fail-never"]
 COPY . .
 RUN mvn package
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","target/*.jar"]
+ENTRYPOINT ["java","-jar","target/*.war"]

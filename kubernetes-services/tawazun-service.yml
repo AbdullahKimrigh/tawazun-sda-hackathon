@@ -4,7 +4,6 @@ metadata:
   name: tawazun
   labels:
     app: tawazun
-  namespace: tawazun
 spec:
   type: NodePort
   ports:

@@ -1,15 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-ebs-db
-  labels:
-    type: cloud
-  namespace: tawazun
+  name: mysql-pv-claim
 spec:
-  storageClassName: mysql-db-ebs
+  storageClassName: manual
   accessModes:
-  - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
-  volumeName: pv-ebs-db
+      storage: 5Gi

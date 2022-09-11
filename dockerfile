@@ -10,7 +10,7 @@ RUN ["mvn", "clean"]
 COPY ["/src", "/app/src"]
 RUN ["mvn", "package"]
 
-FROM openjdk:11-jre
+FROM openjdk:11-jdk
 
 COPY --from=build /app/target/tawazun.war .
 

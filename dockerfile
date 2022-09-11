@@ -15,4 +15,4 @@ FROM openjdk:11-jre-slim
 COPY --from=build /app/target/*.war /
 
 EXPOSE 8080
-CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/tawazun-sda-hackathon.war"]
+CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/*.war"]

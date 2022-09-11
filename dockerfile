@@ -6,7 +6,12 @@ COPY pom.xml /app/pom.xml
 RUN ["mvn", "dependency:resolve"]
 RUN ["mvn", "clean"]
 
-# Adding source, compile and package into a fat jar
+ENV DB_URL=mysql
+ENV DB_PORT=3306
+ENV DB_NAME=DB_tawazun
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=root
+
 COPY ["/src", "/app/src"]
 RUN ["mvn", "package"]
 

@@ -16,35 +16,25 @@ spec:
         app: tawazun
     spec:
       containers:
-      - image: abdullahkimrigh/tawazun-sda-hackathon:0.1
-        name: tawazun-app
-        env:
-          - name: DB_URL
-            value: mysql
-          - name: DB_PORT
-            value: 3306
-          - name: DB_USERNAME
-            value: root
-          - name: DB_PASSWORD
-            value: root
-        ports:
-        - containerPort: 8080
-          name: tawazun
-        livenessProbe:
-          httpGet:
-            path: /probes
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /probes
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-        startupProbe:
-          httpGet:
-            path: /probes
-            port: 80
-          failureThreshold: 30
-          periodSeconds: 10
+        - name: tawazun-app
+          image: abdullahkimrigh/tawazun-sda-hackathon:0.1
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /probes
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /probes
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /probes
+              port: 80
+            failureThreshold: 30
+            periodSeconds: 10

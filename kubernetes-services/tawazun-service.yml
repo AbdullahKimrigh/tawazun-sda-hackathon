@@ -6,7 +6,7 @@ metadata:
     app: tawazun
   namespace: tawazun
 spec:
-  type: LoadBAlancer
+  type: LoadBalancer
   ports:
   - name: tawazun-service
     port: 8080

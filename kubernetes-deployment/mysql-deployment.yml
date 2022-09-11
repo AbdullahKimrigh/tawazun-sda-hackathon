@@ -20,32 +20,32 @@ spec:
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: password
+              value: root
             - name: MYSQL_DATABASE
               value: DB_tawazun
             - name: MYSQL_USER
-              value: admin
+              value: root
             - name: MUSQL_PASSWORD
-              value: admin
+              value: root
           ports:
             - containerPort: 3306
               name: mysql
           livenessProbe:
             httpGet:
               path: /probes
-              port: 3306
+              port: 81
             initialDelaySeconds: 15
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /probes
-              port: 3306
+              port: 81
             initialDelaySeconds: 15
             periodSeconds: 10
           startupProbe:
             httpGet:
               path: /probes
-              port: 3306
+              port: 81
             failureThreshold: 30
             periodSeconds: 10
           volumeMounts:

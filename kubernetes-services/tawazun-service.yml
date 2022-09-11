@@ -6,12 +6,11 @@ metadata:
     app: tawazun
   namespace: tawazun
 spec:
-  type: NodePort
+  type: LoadBAlancer
   ports:
   - name: tawazun-service
-    port: 80
-    targetPort: 80
-    nodePort: 30859
+    port: 8080
+    targetPort: 8080
     protocol: TCP
   selector:
     app: tawazun

@@ -24,11 +24,11 @@ spec:
           - name: DB_PORT
             value: 3306
           - name: DB_USERNAME
-            value: admin
+            value: root
           - name: DB_PASSWORD
-            value: admin
+            value: root
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           name: tawazun
         livenessProbe:
           httpGet:

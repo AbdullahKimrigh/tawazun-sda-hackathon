@@ -12,6 +12,6 @@ RUN ["mvn", "package"]
 
 FROM openjdk:11-jre-slim
 
-COPY target/*.war /app/target/tawazun-sda-hackathon.war /
+COPY /app/target/*.war /app/target/tawazun-sda-hackathon.war /
 
 CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/tawazun-sda-hackathon.war"]
